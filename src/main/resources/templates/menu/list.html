@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="kr">
+<head>
+    <meta charset="UTF-8">
+    <title>메뉴</title>
+</head>
+<body>
+<h1>메뉴 탐색</h1>
+<form th:method="get" th:action="@{/menu}">
+    <label>
+        <input type="text" th:name="menu">
+    </label>
+    <input type="submit" value="클릭 하여 검색">
+</form>
+
+<table>
+</table>
+</body>
+</html>
