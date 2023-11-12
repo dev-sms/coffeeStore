@@ -1,0 +1,30 @@
+server:
+  error:
+    include-stacktrace: always
+  port: 8080
+
+spring:
+  mvc:
+    hidden-method:
+      filter:
+        enabled: true
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/coffee
+    username: root
+    password: 'dev123456'
+
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
+        format_sql: true
+        jdbc:
+          batch_size: 200
+          batch_versioned_data: true
+        order_inserts: true
+        order_updates: true
+        hbm2ddl:
+          auto: update
+        open-in-view: true
+        show-sql: false
