@@ -1,4 +1,4 @@
-package com.example.coffeestore.menu.dto
+package com.example.coffeeStore.menu.dto
 
 data class RecipeInfo(
     val id: Long,

@@ -5,7 +5,7 @@
       <profile name="Gradle Imported" enabled="true">
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="false">
-          <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-configuration-processor/2.7.18-SNAPSHOT/417bba93b66b05c312606280485145e53ebbc23d/spring-boot-configuration-processor-2.7.18-SNAPSHOT.jar" />
+          <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-configuration-processor/3.0.11/8e50db4fa0584b9351e1822b0c9c3e83fb97a897/spring-boot-configuration-processor-3.0.11.jar" />
         </processorPath>
         <module name="coffeeStore.main" />
       </profile>

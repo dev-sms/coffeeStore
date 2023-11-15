@@ -1,15 +1,10 @@
-package com.example.coffeestore.menu.domain
+package com.example.coffeeStore.menu.domain
 
-import com.dnlab.coffee.menu.domain.MeasurementUnit
-import com.example.coffeestore.global.domain.BaseEntity
-import java.time.temporal.TemporalAmount
-import javax.persistence.Column
-import javax.persistence.Entity
-import javax.persistence.EnumType
-import javax.persistence.Enumerated
+import com.example.coffeeStore.global.domain.BaseEntity
+import jakarta.persistence.*
 
 @Entity
-class Ingredient (
+class Ingredient(
     @Column(nullable = false, unique = true)
     val name: String,
     @Enumerated(EnumType.STRING)

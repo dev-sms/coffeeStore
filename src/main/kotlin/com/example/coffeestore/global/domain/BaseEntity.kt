@@ -1,9 +1,6 @@
-package com.example.coffeestore.global.domain
+package com.example.coffeeStore.global.domain
 
-import javax.persistence.GeneratedValue
-import javax.persistence.GenerationType
-import javax.persistence.Id
-import javax.persistence.MappedSuperclass
+import jakarta.persistence.*
 
 @MappedSuperclass
 open class BaseEntity {

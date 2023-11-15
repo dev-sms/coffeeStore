@@ -1,4 +1,4 @@
-package com.dnlab.coffee.global.config
+package com.example.coffeeStore.global.config
 
 import org.springframework.context.annotation.Configuration
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry
@@ -8,10 +8,10 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer
 class WebConfig: WebMvcConfigurer {
     override fun addViewControllers(registry: ViewControllerRegistry) {
         with(registry) {
-            //addViewController("/").setViewName("index") // 기본이 index이지 않나?
-            //addViewController("/user/admin/login").setViewName("admin/login")
-            //addViewController("/admin").setViewName("admin/index")
-            //addViewController("/order/complete").setViewName("order/complete")
+            addViewController("/").setViewName("index")
+            addViewController("/user/admin/login").setViewName("admin/login")
+            addViewController("/admin").setViewName("admin/index")
+            addViewController("/order/complete").setViewName("order/complete")
         }
     }
 }

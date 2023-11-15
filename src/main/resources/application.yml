@@ -5,7 +5,7 @@ server:
 
 spring:
   mvc:
-    hidden-method:
+    hiddenmethod:
       filter:
         enabled: true
 
@@ -16,6 +16,7 @@ spring:
 
   jpa:
     properties:
+
       hibernate:
         dialect: org.hibernate.dialect.MySQLDialect
         format_sql: true
@@ -26,5 +27,6 @@ spring:
         order_updates: true
         hbm2ddl:
           auto: update
-        open-in-view: true
-        show-sql: false
+    open-in-view: true
+    show-sql: false
+

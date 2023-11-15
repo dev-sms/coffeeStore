@@ -1,6 +1,8 @@
-package com.dnlab.coffee.menu.domain
+package com.example.coffeeStore.menu.domain
 
-enum class MeasurementUnit(val initial: String) {
+enum class MeasurementUnit(
+    val initial: String
+) {
     GRAM("g"),
     MILLILITER("mL"),
     POUND("lbs")

@@ -1,6 +1,6 @@
-package com.example.coffeestore.menu.repository
+package com.example.coffeeStore.menu.repository
 
-import com.example.coffeestore.menu.domain.Menu
+import com.example.coffeeStore.menu.domain.Menu
 import org.springframework.data.jpa.repository.JpaRepository
 
 interface MenuRepository : JpaRepository<Menu, Long> {

@@ -1,19 +1,42 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="kr">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      lang="kr">
 <head>
     <meta charset="UTF-8">
     <title>메뉴</title>
+    <link href="/css/style.css" rel="stylesheet"/>
 </head>
 <body>
-<h1>메뉴 탐색</h1>
+<h1>메뉴</h1>
 <form th:method="get" th:action="@{/menu}">
     <label>
         <input type="text" th:name="menu">
     </label>
-    <input type="submit" value="클릭 하여 검색">
+    <input type="submit" value="검색">
 </form>
 
 <table>
+    <thead>
+    <tr>
+        <th>메뉴명</th>
+        <th>가격</th>
+        <th>분류</th>
+        <th>특별메뉴여부</th>
+        <th>특별메뉴종류</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="menu : ${menus}">
+        <td><a th:href="@{/menu/{menuId}(menuId = ${menu.id})}" th:text="${menu.name}"></a></td>
+        <td th:text="${menu.price}"></td>
+        <td th:text="${menu.productType}"></td>
+        <td><span th:if="${menu.specialMenu}">O</span></td>
+        <td th:if="${menu.specialMenuType}"><span th:text="${menu.specialMenuType}"></span></td>
+    </tr>
+    </tbody>
 </table>
+<a sec:authorize="isAuthenticated()" th:href="@{/menu/new}">새 메뉴</a>
+<a sec:authorize="isAuthenticated()" th:href="@{/admin}">관리메인으로</a>
 </body>
 </html>

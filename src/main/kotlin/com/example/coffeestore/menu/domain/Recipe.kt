@@ -1,11 +1,11 @@
-package com.example.coffeestore.menu.domain
+package com.example.coffeeStore.menu.domain
 
-import com.example.coffeestore.global.domain.BaseEntity
-import com.example.coffeestore.menu.dto.RecipeInfo
-import javax.persistence.Column
-import javax.persistence.Entity
-import javax.persistence.FetchType
-import javax.persistence.ManyToOne
+import com.example.coffeeStore.global.domain.BaseEntity
+import com.example.coffeeStore.menu.dto.RecipeInfo
+import jakarta.persistence.Column
+import jakarta.persistence.Entity
+import jakarta.persistence.FetchType
+import jakarta.persistence.ManyToOne
 
 @Entity
 class Recipe(
@@ -16,10 +16,11 @@ class Recipe(
     @Column(nullable = false)
     var amount: Double
 ) : BaseEntity() {
-    fun toRecipeInfo() : RecipeInfo = RecipeInfo(
-        id = this.id,
-        ingredient = this.ingredient.name,
-        amount = this.amount,
-        measurementUnit = this.ingredient.measurementUnit.initial
-    )
+    fun toRecipeInfo(): RecipeInfo =
+        RecipeInfo(
+            id = this.id,
+            ingredient = this.ingredient.name,
+            amount = this.amount,
+            measurementUnit = this.ingredient.measurementUnit.initial
+        )
 }

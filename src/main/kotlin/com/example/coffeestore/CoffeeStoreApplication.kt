@@ -1,4 +1,4 @@
-package com.example.coffeestore
+package com.example.coffeeStore
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication

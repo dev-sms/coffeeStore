@@ -1,11 +1,21 @@
-package com.example.coffeestore.global.domain
+package com.example.coffeeStore.global.domain
 
+import jakarta.persistence.*
+import org.springframework.data.annotation.CreatedDate
+import org.springframework.data.annotation.LastModifiedBy
 import org.springframework.data.jpa.domain.support.AuditingEntityListener
-import javax.persistence.EntityListeners
-import javax.persistence.MappedSuperclass
+import java.time.LocalDateTime
 
 @MappedSuperclass
 @EntityListeners(AuditingEntityListener::class)
 open class BaseTimeEntity : BaseEntity() {
+    @CreatedDate
+    @Column(nullable = false)
+    var createdAt: LocalDateTime = LocalDateTime.now()
+        private set
 
+    @LastModifiedBy
+    @Column(nullable = false)
+    var updatedAt: LocalDateTime = LocalDateTime.now()
+        private set
 }
