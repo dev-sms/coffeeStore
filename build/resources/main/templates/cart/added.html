@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="kr">
+<head>
+  <meta charset="UTF-8">
+  <title>장바구니 추가 결과</title>
+</head>
+<body>
+<h1>장바구니 추가 결과</h1>
+<table>
+  <thead>
+  <tr>
+    <th>메뉴명</th>
+    <th>수량</th>
+    <th>가격</th>
+    <th>수량변경</th>
+    <th>삭제</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="item : ${cart}">
+    <td th:text="${item.menu}"></td>
+    <td th:text="${item.quantity}"></td>
+    <td th:text="${item.totalPrice}"></td>
+    <td>
+      <form th:action="@{/order/cart/{itemId}/quantity(itemId=${item.itemId})}" th:method="patch">
+        <label for="quantity">
+          <input type="number" id="quantity" name="quantity">
+        </label>
+        <input type="submit" value="변경">
+      </form>
+    </td>
+    <td>
+      <form th:action="@{/order/cart/{itemId}(itemId=${item.itemId})}" th:method="delete">
+        <input type="submit" value="삭제">
+      </form>
+    </td>
+  </tr>
+  </tbody>
+  <tfoot>
+  <tr>
+    <td></td>
+    <td></td>
+    <td th:text="${totalPrice}"></td>
+
+  </tr>
+  </tfoot>
+</table>
+<a th:href="@{/order}">결제하기</a><br>
+<a th:href="@{/menu}">메뉴로 돌아가기</a><br>
+<form th:method="delete" th:action="@{/order/cart}">
+  <input type="submit" value="전체삭제">
+</form>
+</body>
+</html>

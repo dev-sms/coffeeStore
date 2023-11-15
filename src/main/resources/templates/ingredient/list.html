@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="kr">
+
+<head>
+  <meta charset="UTF-8">
+  <title>재료</title>
+</head>
+<body>
+<table>
+  <thead>
+  <tr>
+    <th>재료명</th>
+    <th>측정단위</th>
+    <th>재고량</th>
+    <th>재고량 수정</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="ingredient : ${ingredients}">
+    <td th:text="${ingredient.name}"></td>
+    <td th:text="${ingredient.measurementUnit.initial}"></td>
+    <td th:text="${ingredient.stock}"></td>
+    <td>
+        <form th:action="@{/ingredient/amount}" th:method="patch">
+      <!-- action - form 데이터의 주소, method - HTTP method
+      patch - 리소스 일부 갱신(update)
+      put - 리소스 전체 생신 (update)
+      get - READ
+      post - CREATE
+      delete - 리소스를 제거하기 위해 DELETE
+      -->
+        <input type="hidden" id="ingredientId" name="ingredientId" th:value="${ingredient.id}">
+        <label for="amount">
+          <input type="number" id="amount" name="amount" th:value="${ingredient.stock}">
+        </label>
+        <input type="submit" value="수정">
+      </form>
+    </td>
+  </tr>
+  </tbody>
+</table>
+<br/>
+
+<form th:action="@{/ingredient/new}" method="get">
+  <input type="submit" value="새 재료">
+</form>
+<br>
+<a th:href="@{/admin}">메인</a>
+</body>
+</html>

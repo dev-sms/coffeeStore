@@ -1,0 +1,54 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 20px;
+}
+
+label {
+  display: inline-block;
+  width: 150px;
+}
+
+button {
+  margin-top: 20px;
+}
+
+hr {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+/* 테이블 전체 스타일링 */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px; /* 테이블과 상위 요소 간의 간격 조절 */
+}
+
+/* 테이블 헤더 스타일링 */
+thead {
+  background-color: #f2f2f2; /* 헤더 배경색 */
+}
+
+/* 테이블 헤더 셀 스타일링 */
+th {
+  padding: 10px;
+  text-align: center;
+  border: 1px solid #dddddd; /* 셀 테두리 */
+}
+
+/* 테이블 본문 셀 스타일링 */
+td {
+  padding: 10px;
+  text-align: center;
+  border: 1px solid #dddddd; /* 셀 테두리 */
+}
+
+/* 홀수 행 배경색 지정 */
+tr:nth-child(odd) {
+  background-color: #f9f9f9; /* 홀수 행 배경색 */
+}
+
+/* 링크 스타일링 */
+a {
+  text-decoration: none;
+  color: #007bff; /* 링크 색상 */
+}
