@@ -9,7 +9,7 @@
 <form th:action="@{/order}" method="post">
   <label for="paymentType">지불 방식:</label>
   <select id="paymentType" name="paymentType">
-    <option th:each="type : ${T(com.dnlab.coffee.order.domain.PaymentType).values()}"
+    <option th:each="type : ${T(com.example.coffeeStore.order.domain.PaymentType).values()}"
             th:value="${type.name()}"
             th:text="${type.value}"></option>
   </select>

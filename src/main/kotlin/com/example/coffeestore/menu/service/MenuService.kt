@@ -4,13 +4,17 @@ import com.example.coffeeStore.menu.domain.Menu
 import com.example.coffeeStore.menu.domain.SpecialMenuType
 import com.example.coffeeStore.menu.dto.*
 import com.example.coffeeStore.menu.repository.MenuRepository
+import com.example.coffeeStore.order.repository.OrderMenuRepository
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
+import com.example.coffeeStore.order.dto.OrderMenuInfo
+import com.fasterxml.jackson.databind.JsonSerializer.None
 
 @Service
 class MenuService(
     private val menuRepository: MenuRepository,
-    private val recipeService: RecipeService
+    private val recipeService: RecipeService,
+    private val orderMenuRepository: OrderMenuRepository
 ) {
 
     @Transactional(readOnly = true)
@@ -54,10 +58,17 @@ class MenuService(
     }
 
     @Transactional
+    fun getBestMenu() {
+        val orderMenuList = orderMenuRepository.findAll()
+        val orderedMenuName = orderMenuList.map { it.menu.name }
+    }
+
+    @Transactional
     fun updateSpecialMenuType(menuId: Long, specialMenuType: SpecialMenuType){
         val menu = getMenuById(menuId)
         menu.specialMenuType = specialMenuType
     }
+
 
     fun getMenuById(menuId: Long): Menu = menuRepository.findMenuById(menuId)
         ?: throw NoSuchElementException("해당 메뉴를 찾을 수 없습니다. : $menuId")

@@ -15,7 +15,8 @@
     </label>
     <input type="submit" value="검색">
 </form>
-
+<!--<p>베스트 메뉴 1위 : <span th:text="${menu.bestMenu}"></span></p>-->
+<!--<p>베스트 메뉴 2위 : <span th:text="${menu.bestMenu}"></span></p>-->
 <table>
     <thead>
     <tr>
@@ -23,7 +24,7 @@
         <th>가격</th>
         <th>분류</th>
         <th>특별메뉴여부</th>
-        <th>특별메뉴종류</th>
+<!--        <th>특별메뉴종류</th>-->
     </tr>
     </thead>
     <tbody>
@@ -32,7 +33,7 @@
         <td th:text="${menu.price}"></td>
         <td th:text="${menu.productType}"></td>
         <td><span th:if="${menu.specialMenu}">O</span></td>
-        <td th:if="${menu.specialMenuType}"><span th:text="${menu.specialMenuType}"></span></td>
+<!--        <td th:if="${menu.specialMenuType}"><span th:text="${menu.specialMenuType}"></span></td>-->
     </tr>
     </tbody>
 </table>

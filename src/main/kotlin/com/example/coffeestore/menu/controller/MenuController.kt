@@ -43,6 +43,7 @@ class MenuController(
         model: ModelMap
     ): String {
         model["menus"] = menuName?.let { menuService.getMenuDisplays(it) } ?: menuService.getMenuDisplays()
+        model["bestMenu1"]
         return "menu/list"
     }
 
