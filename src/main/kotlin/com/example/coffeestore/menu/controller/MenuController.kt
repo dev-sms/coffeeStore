@@ -39,11 +39,12 @@ class MenuController(
 
     @GetMapping
     fun showMenus(
-        @RequestParam("menu", required = false) menuName: String?,
+        @RequestParam("menu", required = false) menuName: String?, // menu를 이름으로 하는 http 요청 오면 집어넣음
         model: ModelMap
     ): String {
         model["menus"] = menuName?.let { menuService.getMenuDisplays(it) } ?: menuService.getMenuDisplays()
-        model["bestMenu1"]
+        // 검색을 위해 구현, menuName이 존재하면 메소드 오버로딩되있어서 검색해서 반환이고 아니면 그냥 다 긁어서 보여줌
+        model["bestMenus"] = menuService.getBestMenu()
         return "menu/list"
     }
 

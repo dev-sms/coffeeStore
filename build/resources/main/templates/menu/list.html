@@ -15,8 +15,8 @@
     </label>
     <input type="submit" value="검색">
 </form>
-<!--<p>베스트 메뉴 1위 : <span th:text="${menu.bestMenu}"></span></p>-->
-<!--<p>베스트 메뉴 2위 : <span th:text="${menu.bestMenu}"></span></p>-->
+<p>베스트 메뉴 1위 : <span th:text="${bestMenus[0].first.name}"></span> <span th:text="${bestMenus[0].second}+'개'"></span></p>
+<p>베스트 메뉴 2위 : <span th:text="${bestMenus[1].first.name}"></span> <span th:text="${bestMenus[1].second}+'개'"></span> </p>
 <table>
     <thead>
     <tr>

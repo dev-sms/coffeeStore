@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="kr">
+<head>
+    <meta charset="UTF-8">
+    <title>통계</title>
+    <link href="/css/style.css" rel="stylesheet"/>
+</head>
+<body>
+<table>
+    <thead>
+    <tr>
+        <th>년월</th>
+        <th>순위</th>
+        <th>메뉴이름</th>
+        <th>판매량</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="bestMenu : ${bestMenus}">
+        <td th:text="${bestMenu.createdAt}"></td>
+        <td th:text="${bestMenu.menuRank}"></td>
+        <td th:text="${bestMenu.name}"></td>
+        <td th:text="${bestMenu.quantity}"></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
