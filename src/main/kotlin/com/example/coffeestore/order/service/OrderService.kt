@@ -7,6 +7,7 @@ import com.example.coffeeStore.order.domain.PaymentType
 import com.example.coffeeStore.order.dto.*
 import com.example.coffeeStore.order.repository.CustomOrderRepository
 import com.example.coffeeStore.order.repository.OrderMenuRepository
+import com.example.coffeeStore.user.repository.CustomerRepository
 import com.example.coffeeStore.user.service.CustomerService
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
@@ -17,7 +18,8 @@ class OrderService(
     private val orderMenuRepository: OrderMenuRepository,
     private val customerService: CustomerService,
     private val menuService: MenuService,
-    private val recipeService: RecipeService
+    private val recipeService: RecipeService,
+    private val customerRepository: CustomerRepository
 ) {
     @Transactional
     fun processOrder(customerPhone: String, paymentType: PaymentType, cart: Cart) {
@@ -25,13 +27,27 @@ class OrderService(
         val order = customOrderRepository.save(
             CustomerOrder(
                 customer = customer,
-                paymentType = paymentType
+                paymentType = paymentType,
+                totalPrice = 0,
+                saledPrice = 0
             )
         )
         cart.items.forEach { cartItem ->
-            val orderMenu = orderMenuRepository.save(cartItem.toEntity(menuService.getMenuById(cartItem.itemId), order))
+            var saleNum: Int = 0
+            if(customer.customerGrade == "Bronze")
+                saleNum = 5
+            else if(customer.customerGrade == "Silver")
+                saleNum = 10
+            else if(customer.customerGrade == "Gold")
+                saleNum = 20
+            customer.updateTotalPrice(cartItem.toEntity(menuService.getMenuById(cartItem.itemId), order, saleNum).price)
+            order.updateTotalPrice(cartItem.toEntity(menuService.getMenuById(cartItem.itemId), order, 0).price)
+            order.updateSaledPrice(cartItem.toEntity(menuService.getMenuById(cartItem.itemId), order, 100-saleNum).price)
+            val orderMenu = orderMenuRepository.save(cartItem.toEntity(menuService.getMenuById(cartItem.itemId), order, saleNum))
             recipeService.updateRecipesOnOrder(orderMenu)
         }
+        customer.updateCustomerGrade()
+
     }
 
     @Transactional(readOnly = true)

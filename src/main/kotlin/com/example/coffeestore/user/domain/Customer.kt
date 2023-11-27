@@ -14,12 +14,31 @@ class Customer(
 
     @Column(nullable = false, unique = true)
     val phone: String,
-
     @Column(nullable = false)
-    val address: String
+    val address: String,
+    @Column(nullable = false)
+    var totalPrice: Int = 0,
+    @Column(nullable = true)
+    var customerGrade: String?
 ) : BaseTimeEntity() {
     @OneToMany(mappedBy = "customer", fetch = FetchType.LAZY)
     private val _customerOrders: MutableList<CustomerOrder> = mutableListOf()
     val customerOrders: List<CustomerOrder>
         get() = _customerOrders
+
+    fun updateTotalPrice(totalPrice: Int){
+        this.totalPrice += totalPrice
+        //updateCustomerGrade()
+    }
+    fun updateCustomerGrade(){
+        if(this.totalPrice >= 50000){
+            this.customerGrade = "Gold"
+        }
+        else if(this.totalPrice >= 30000){
+            this.customerGrade = "Silver"
+        }
+        else if(this.totalPrice >= 10000){
+            this.customerGrade = "Bronze"
+        }
+    }
 }

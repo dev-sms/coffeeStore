@@ -16,12 +16,12 @@ data class CartItem(
             quantity = this.quantity
         )
 
-    fun toEntity(menu: Menu, order: CustomerOrder): OrderMenu {
+    fun toEntity(menu: Menu, order: CustomerOrder, saleNum: Int): OrderMenu {
         return OrderMenu(
             customerOrder = order,
             menu = menu,
             quantity = this.quantity,
-            price = this.quantity * menu.price
+            price = (this.quantity * menu.price) - (this.quantity * menu.price * saleNum / 100)
         )
     }
 }
